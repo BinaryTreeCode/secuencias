@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="web para hacer secuencias numericas">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <title>secuencias</title>
 </head>
+
 <body>
     <h1>Secuencias</h1>
     <h2>Esta es una pagina para generar secuenicas</h2>
     <h4>progresión geométrica</h4>
     <p>introdusca la razon y el largo de la secuencia</p>
-    <form action="" >
+    <form action="">
+        <label for="type_razón">
+            <samp>escoje el tipo de secuencia</samp>
+            <select id="type_razón">
+                <option value="arimetica">arimetica</option>
+                <option value="geometrica">geometrica</option>
+            </select>
+        </label>
+        <br>
+        <label for="type_problem">
+            <samp>escoje el tipo de problema</samp>
+            <select id="type_problem">
+                <option value="lineal">hacer secuencia numerica</option>
+                <option value="reverse">hacer secuencia numerica hacia atras</option>
+                <!-- <option value="false">hallar razón</option> -->
+            </select>
+        </label>
+        <br>
         <label for="razon">
             <samp>Razon de la secuencia</samp>
             <input type="number" id="razon" placeholder="Razon">
@@ -21,11 +42,17 @@
             <samp>Largo de la secuencia</samp>
             <input type="number" id="largo" placeholder="Largo">
         </label>
+        <br>
+        <label for="value_inicial">
+            <samp>Valor inicial de la secuencia</samp>
+            <input type="number" id="value_inicial" placeholder="Valor inicial">
+        </label>
         <label for="btn">
-            <button type="button" onclick="operacion()" id="btn" >play</button>
+            <button type="button" onclick="modulo()" id="btn">play</button>
         </label>
     </form>
-    
+    <canvas id="canva"></canvas>
     <script src="./secuencia.js"></script>
 </body>
+
 </html>
