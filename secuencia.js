@@ -27,9 +27,9 @@ function modulo() {
 var secuencia = [];
 var tiempo = [];
 var i = 0;
-var razon, largo, razon1, razon2, inicio, 
-function geometrica() {
+var razon, largo, razon1, razon2, inicio;
 
+function geometrica() {
     if (problema.value == true && problema.problem == "lineal") {
         secuencia.push(inicio);
         tiempo.push(1);
@@ -93,8 +93,9 @@ function geometrica() {
             }
         ]
     }
-    grafica()
 }
+
+
 
 function arimetica() {
     
