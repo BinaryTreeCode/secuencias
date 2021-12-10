@@ -8,20 +8,16 @@ var pre_largo = document.getElementById("largo");
 var largo_id2 = document.getElementById("largo_problem");
 
 var pre_type_problem = document.getElementById("type_problem");
-var ype_problem_id2 = document.getElementById("type_problem_problem");
+var pre_type_problem_id2 = document.getElementById("type_problem_problem");
 
 var Box = document.getElementById("check");
-
-var pre_valor_inicial = pre_valor_inicial
-var pre_largo = pre_largo;
-var pre_type_problem = pre_type_problem;
 
 Box.addEventListener ("change", function () {
     checkBox = Box.checked;
     if (checkBox == true) {
         pre_valor_inicial = valor_inicial_id2;
         pre_largo = largo_id2;
-        pre_type_problem = ype_problem_id2;
+        pre_type_problem = pre_type_problem_id2;
     }
     else {
     }
@@ -50,11 +46,41 @@ function modulo() {
         geometrica();
     }
     grafica();
+    resultado = document.getElementById("resultado");
     imprimir();
     console.log(secuencia);
     secuencia = [];
     tiempo = [];
 }
+
+function modulo_razon() {
+    inicio = parseInt(pre_valor_inicial.value);
+    largo = parseInt(pre_largo.value);
+    type_sequence = type_sequence_id.value;
+    type_problem = pre_type_problem.value;
+
+    secuencia.push(inicio);
+    tiempo.push(1);
+
+    problema = {
+        value: true,
+        sequence: type_sequence,
+        problem: type_problem,
+    }
+    if (type_sequence == "aritmética") {
+        arimetica();
+    } else {
+        geometrica();
+    }
+    grafica();
+    resultado = document.getElementById("resultado_problem");
+    imprimir();
+    console.log(secuencia);
+    secuencia = [];
+    tiempo = [];
+}
+
+
 
 var secuencia = [];
 var tiempo = [];
@@ -86,32 +112,7 @@ function geometrica() {
             n++;
             i++;
         }
-    } else {
-        if (secuencia[0] == 1) {
-            razon1 = secuencia[2] / secuencia[1];
-            razon2 = secuencia[3] / secuencia[2];
-            razon1 = parseFloat(razon1.toFixed(3));
-            razon2 = parseFloat(razon2.toFixed(3));
-            var txt = secuencia[2] + " / " + secuencia[1] + " = " + razon1
-                + " y " + secuencia[3] + " / " + secuencia[2] + " = " + razon2 + " razón  = ";
-        } else {
-            razon1 = secuencia[1] / secuencia[0];
-            razon2 = secuencia[2] / secuencia[1];
-            razon1 = parseFloat(razon1.toFixed(3));
-            razon2 = parseFloat(razon2.toFixed(3));
-            var txt = secuencia[1] + " / " + secuencia[0] + " = " + razon1 +
-                " y " + secuencia[2] + " / " + secuencia[1] + " = " + razon2 + " razón  = ";
-        }
-        if (razon1 == razon2) {
-            razon = razon1;
-            console.log(txt + razon);
-        }
-        else {
-            razon = false;
-            console.log("No es una secuencia geometrica");
-        }
-        console.log(razon1 + " = " + razon2 + " " + razon);
-    }
+    } 
     dataset = {
         labels: tiempo,
         datasets: [
@@ -125,8 +126,32 @@ function geometrica() {
         ]
     }
 }
-
-
+function geometria_razon() {
+    if (secuencia[0] == 1) {
+        razon1 = secuencia[2] / secuencia[1];
+        razon2 = secuencia[3] / secuencia[2];
+        razon1 = parseFloat(razon1.toFixed(3));
+        razon2 = parseFloat(razon2.toFixed(3));
+        var txt = secuencia[2] + " / " + secuencia[1] + " = " + razon1
+            + " y " + secuencia[3] + " / " + secuencia[2] + " = " + razon2 + " razón  = ";
+    } else {
+        razon1 = secuencia[1] / secuencia[0];
+        razon2 = secuencia[2] / secuencia[1];
+        razon1 = parseFloat(razon1.toFixed(3));
+        razon2 = parseFloat(razon2.toFixed(3));
+        var txt = secuencia[1] + " / " + secuencia[0] + " = " + razon1 +
+            " y " + secuencia[2] + " / " + secuencia[1] + " = " + razon2 + " razón  = ";
+    }
+    if (razon1 == razon2) {
+        razon = razon1;
+        console.log(txt + razon);
+    }
+    else {
+        razon = false;
+        console.log("No es una secuencia geometrica");
+    }
+    console.log(razon1 + " = " + razon2 + " " + razon);
+}
 
 function arimetica() {
     if (problema.value == true && problema.problem == "lineal") {
@@ -153,7 +178,7 @@ function arimetica() {
             n++;
             i++;
         }
-    } else { }
+    } 
     dataset = {
         labels: tiempo,
         datasets: [
@@ -167,8 +192,37 @@ function arimetica() {
         ]
     }
 }
+function aritmitcia_razon() {
+    if (secuencia[0] == 1) {
+        razon1 = secuencia[2] - secuencia[1];
+        razon2 = secuencia[3] - secuencia[2];
+        razon1 = parseFloat(razon1.toFixed(3));
+        razon2 = parseFloat(razon2.toFixed(3));
+        var txt = secuencia[2] + " - " + secuencia[1] + " = " + razon1
+            + " y " + secuencia[3] + " - " + secuencia[2] + " = " + razon2 + " razón  = ";
+    } else {
+        razon1 = secuencia[1] - secuencia[0];
+        razon2 = secuencia[2] - secuencia[1];
+        razon1 = parseFloat(razon1.toFixed(3));
+        razon2 = parseFloat(razon2.toFixed(3));
+        var txt = secuencia[1] + " - " + secuencia[0] + " = " + razon1 +
+            " y " + secuencia[2] + " - " + secuencia[1] + " = " + razon2 + " razón  = ";
+    }
+    if (razon1 == razon2) {
+        razon = razon1;
+        console.log(txt + razon);
+    }
+    else {
+        razon = "No es una secuencia arimetica";
+        console.log(false);
+    }
+    return razon;
+}
+
 
 const ctx = document.getElementById('canva');
+
+
 function grafica() {
     const myChart = new Chart(ctx, {
         type: 'line',
@@ -215,26 +269,14 @@ function grafica() {
 
 // imprime secuenica en el id resultado
 function imprimir() {
-    var resultado = document.getElementById("resultado");
     var txt = "";
     for (let i = 0; i < secuencia.length; i++) {
         txt += secuencia[i] + " ";
     }
     resultado.innerHTML = txt;
 }
+
 var resultado;
-var btn_posición = document.getElementById("btn_posición");
-
-btn_posición.addEventListener("click", function () { 
-    resultado = document.getElementById("resultado_razon_posición");
-    imprimir_razon()
-});
-
-var btn_array = document.getElementById("btn_array");
-btn_array.addEventListener("click", function () {
-    resultado = document.getElementById("resultado_razon_array");
-    imprimir_razon()
-});
 
 
 function imprimir_razon() {
@@ -242,16 +284,11 @@ function imprimir_razon() {
     resultado.innerHTML = txt;
 }
 
-var tip = false, diferencia, pre_razon;
+var diferencia, pre_razon;
 function hallar_razon(ti, tf, Pi, Pf) {
     if (ti < 0) {
         ti = Math.abs(ti);
     }
-    // if (tip = false) {
-    //     diferencia = tf - ti;
-    // } else {
-    //     diferencia = tf + tip;
-    // }
 
     diferencia = Pf - Pi;
     razon = 1;
@@ -266,6 +303,36 @@ function hallar_razon(ti, tf, Pi, Pf) {
     return razon;
 }
 
+var dato1_id = document.getElementById("dato1");
+var posicion1_id = document.getElementById("posicion1");
 
+var dato2_id = document.getElementById("dato2");
+var posicion2_id = document.getElementById("posicion2");
+
+
+function posición() {
+    var dato1 = parseFloat(dato1_id.value);
+    var dato2 = parseFloat(dato2_id.value);
+    var posicion1 = parseFloat(posicion1_id.value);
+    var posicion2 = parseFloat(posicion2_id.value);
+
+    hallar_razon(dato1, dato2, posicion1, posicion2);
+    resultado = document.getElementById("resultado_razon_posición");
+    imprimir_razon()
+} 
+
+var date = document.getElementById("datos");
+function array() {
+    type_sequence = type_sequence_id.value;
+    secuencia = date.value.split(',').map(Number);
+
+    if (type_sequence == "aritmética") {
+        aritmitcia_razon();
+    } else {
+        geometria_razon();;
+    }
+    resultado = document.getElementById("resultado_razon_array");
+    imprimir_razon();
+}
 
 
