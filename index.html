@@ -13,8 +13,6 @@
 <body>
     <h1>Secuencias</h1>
     <h2>Esta es una pagina para generar secuenicas</h2>
-    <h4>progresión geométrica</h4>
-    <p>introdusca la razon y el largo de la secuencia</p>
     <form action="">
         <label for="type_razón">
             <samp>escoje el tipo de secuencia</samp>
@@ -24,12 +22,86 @@
             </select>
         </label>
         <br>
+        <label for="check">
+            <samp>tiene la razon de la secuencia</samp>
+            <input type="checkbox" id="check">
+        </label>
+    </form>
+
+    <h3>responda las siguientes preguntas si no tiene la razon</h3>
+    <p><strong>si tiene </strong> la <strong>razon</strong> pase al siguiente titulo</p>
+
+    <p><strong>caso 1</strong> tengo dos datos de la secuencia y su poción, unas vez insertados los datos pase a la sección <strong>hacer secuencia</strong></p>
+    <p><strong>si no tiene</strong> estos datos pase al caso 2</p>
+    <form action="" method="get">
+        <label for="dato1">
+            <samp>dato1 de la secuencia</samp>
+            <input type="number" id="dato1" placeholder="dato1">
+        </label>
+        <label for="dato1">
+            <samp>posición en la secuencia</samp>
+            <input type="number" id="posicion1" placeholder="posicion1">
+        </label>
+        <br>
+        <label for="dato2">
+            <samp>dato2 de la secuencia</samp>
+            <input type="number" id="dato2" placeholder="dato2">
+        </label>
+        <label for="dato2">
+            <samp>posición en la secuencia</samp>
+            <input type="number" id="posicion2" placeholder="posicion2">
+        </label>
+        <label for="btn_posición">
+            <button type="button" onclick="modulo()" id="btn_posición">ver resultado</button>
+        </label>
+    </form>
+    <div id="resultado_razon_posición">
+    </div>
+    <p><strong>caso 2</strong> tiene la secuencia pero no la razon, unas vez insertados los datos pase a la sección <strong>hacer secuencia</strong></p>
+    <form action="">
+        <label for="datos">
+            <samp>ingresa los datos separados por una coma</samp>
+            <textarea name="comentarios" rows="1" cols="25" placeholder=" 2, 4, 8, 16, ..." id="datos">
+            </textarea>
+        </label>
+        <label for="btn_array">
+            <button type="button" onclick="modulo()" id="btn_array">ver resultado</button>
+        </label>
+    </form>
+    <div id="resultado_razon_array">
+    </div>
+
+    <p>relleno estos datos para <strong>hacer la secuencia</strong></p>
+
+    <form action="">
+        <label for="type_problem_problem">
+            <samp>escoje el tipo de problema</samp>
+            <select id="type_problem">
+                <option value="lineal">hacer secuencia numerica hacia delante</option>
+                <option value="reverse">hacer secuencia numerica hacia atras</option>
+            </select>
+        </label>
+        <br>
+        <label for="value_inicial_problem">
+            <samp>Valor inicial de la secuencia</samp>
+            <input type="number" id="value_inicial_problem" placeholder="Valor inicial">
+        </label>
+        <br>
+        <label for="largo_problem">
+            <samp>Largo de la secuencia</samp>
+            <input type="number" id="largo_problem" placeholder="Largo">
+        </label>
+    </form>
+    <div id="resultado_problem">
+    </div>
+
+    <h3>responda las siguientes preguntas si tiene la razon</h3>
+    <form action="">
         <label for="type_problem">
             <samp>escoje el tipo de problema</samp>
             <select id="type_problem">
-                <option value="lineal">hacer secuencia numerica</option>
+                <option value="lineal">hacer secuencia numerica hacia delante</option>
                 <option value="reverse">hacer secuencia numerica hacia atras</option>
-                <!-- <option value="false">hallar razón</option> -->
             </select>
         </label>
         <br>
@@ -56,4 +128,5 @@
     <canvas id="canva"></canvas>
     <script src="./secuencia.js"></script>
 </body>
+
 </html>
