@@ -7,10 +7,13 @@ var type_problem_id = document.getElementById("type_problem");
 let type_sequence, type_problem, problema;
 function modulo() {
     inicio = parseInt(valor_inicial_id.value);
-    razon = parseInt(razon_id.value);
+    razon = parseFloat(razon_id.value);
     largo = parseInt(largo_id.value);
     type_sequence = type_sequence_id.value;
     type_problem = type_problem_id.value;
+
+    secuencia.push(inicio);
+    tiempo.push(1);
 
     problema = {
         value: true,
@@ -19,9 +22,14 @@ function modulo() {
     }
     if (type_sequence == "aritmética") {
         arimetica();
-    } else  {
+    } else {
         geometrica();
     }
+    grafica();
+    imprimir();
+    console.log(secuencia);
+    secuencia = [];
+    tiempo = [];
 }
 
 var secuencia = [];
@@ -31,8 +39,6 @@ var razon, largo, razon1, razon2, inicio;
 
 function geometrica() {
     if (problema.value == true && problema.problem == "lineal") {
-        secuencia.push(inicio);
-        tiempo.push(1);
         i = 1;
         let n = 0;
         while (i < largo) {
@@ -51,6 +57,7 @@ function geometrica() {
         while (i < largo) {
             var termino = secuencia[0] / razon;
             secuencia.unshift(termino);
+            tiempo.push(i + 1);
             console.log(termino);
             n++;
             i++;
@@ -98,10 +105,7 @@ function geometrica() {
 
 
 function arimetica() {
-    
     if (problema.value == true && problema.problem == "lineal") {
-        secuencia.push(inicio);
-        tiempo.push(1);
         i = 1;
         let n = 0;
         while (i < largo) {
@@ -120,11 +124,12 @@ function arimetica() {
         while (i < largo) {
             var termino = secuencia[0] - razon;
             secuencia.unshift(termino);
+            tiempo.push(i + 1);
             console.log(termino);
             n++;
             i++;
         }
-    } else {}
+    } else { }
     dataset = {
         labels: tiempo,
         datasets: [
@@ -137,7 +142,6 @@ function arimetica() {
             }
         ]
     }
-    grafica()
 }
 
 const ctx = document.getElementById('canva');
@@ -184,3 +188,42 @@ function grafica() {
         }
     });
 }
+
+// imprime secuenica en el id resultado
+function imprimir() {
+    var resultado = document.getElementById("resultado");
+    var txt = "";
+    for (let i = 0; i < secuencia.length; i++) {
+        txt += secuencia[i] + " ";
+    }
+    resultado.innerHTML = txt;
+}
+
+
+var tip = false, diferencia, pre_razon;
+function hallar_razon(ti, tf, Pi, Pf) {
+    if (ti < 0) {
+        ti = Math.abs(ti);
+    }
+    // if (tip = false) {
+    //     diferencia = tf - ti;
+    // } else {
+    //     diferencia = tf + tip;
+    // }
+
+    diferencia = Pf - Pi;
+    razon = 1;
+    pre_razon = (diferencia * razon) - ti;
+    iteradora = diferencia * razon
+    while (iteradora <= tf) {
+        ++razon;
+        iteradora = diferencia * razon
+        pre_razon = (diferencia * razon) - ti;
+        console.log(pre_razon);
+    }
+    return razon;
+}
+
+
+
+
