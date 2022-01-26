@@ -1,6 +1,8 @@
 var type_sequence_id = document.getElementById("type_razón");
 var razon_id = document.getElementById("razon");
 
+
+
 var pre_valor_inicial = document.getElementById("value_inicial");
 var valor_inicial_id2 = document.getElementById("value_inicial_problem");
 
@@ -14,12 +16,21 @@ var Box = document.getElementById("check");
 
 Box.addEventListener ("change", function () {
     checkBox = Box.checked;
-    if (checkBox == true) {
+    if (checkBox == false) {
         pre_valor_inicial = valor_inicial_id2;
         pre_largo = largo_id2;
         pre_type_problem = pre_type_problem_id2;
+
+        document.getElementById("No").style.display = "block";
+        document.getElementById("Si").style.display = "none";
     }
     else {
+        pre_valor_inicial = document.getElementById("value_inicial");
+        pre_largo = document.getElementById("largo");
+        pre_type_problem = document.getElementById("type_problem");
+
+        document.getElementById("No").style.display = "none";
+        document.getElementById("Si").style.display = "block";
     }
 });
 
@@ -79,7 +90,6 @@ function modulo_razon() {
     secuencia = [];
     tiempo = [];
 }
-
 
 
 var secuencia = [];
@@ -294,12 +304,13 @@ function hallar_razon(ti, tf, Pi, Pf) {
     razon = 1;
     pre_razon = (diferencia * razon) - ti;
     iteradora = diferencia * razon
-    while (iteradora <= tf) {
+    while (iteradora < tf) {
         ++razon;
         iteradora = diferencia * razon
         pre_razon = (diferencia * razon) - ti;
         console.log(pre_razon);
     }
+    razon = pre_razon;
     return razon;
 }
 
@@ -310,11 +321,12 @@ var dato2_id = document.getElementById("dato2");
 var posicion2_id = document.getElementById("posicion2");
 
 
+var dato1, dato2, posicion1, posicion2; 
 function posición() {
-    var dato1 = parseFloat(dato1_id.value);
-    var dato2 = parseFloat(dato2_id.value);
-    var posicion1 = parseFloat(posicion1_id.value);
-    var posicion2 = parseFloat(posicion2_id.value);
+    dato1 = parseFloat(dato1_id.value);
+    dato2 = parseFloat(dato2_id.value);
+    posicion1 = parseFloat(posicion1_id.value);
+    posicion2 = parseFloat(posicion2_id.value);
 
     hallar_razon(dato1, dato2, posicion1, posicion2);
     resultado = document.getElementById("resultado_razon_posición");
@@ -334,5 +346,3 @@ function array() {
     resultado = document.getElementById("resultado_razon_array");
     imprimir_razon();
 }
-
-
