@@ -193,7 +193,7 @@ function arimetica() {
         labels: tiempo,
         datasets: [
             {
-                label: "pesos",
+                label: "termino",
                 fill: false,
                 backgroundColor: "Scooter",
                 borderColor: "#2648a8",
